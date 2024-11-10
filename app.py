@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import numpy as np
 import pickle
 
-chunk_files = ['book_0.pkl''book_1.pkl','book_2.pkl','book_3.pkl']
+chunk_files = ['book_0.pkl','book_1.pkl','book_2.pkl','book_3.pkl']
 
 # List to store all loaded chunks
 all_chunks = []
