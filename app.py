@@ -2,7 +2,20 @@ from flask import Flask, render_template, request
 import numpy as np
 import pickle
 
-books = pickle.load(open('book.pkl', 'rb'))
+chunk_files = ['book_0.pkl''book_1.pkl','book_2.pkl','book_3.pkl']
+
+# List to store all loaded chunks
+all_chunks = []
+# Load each chunk and append its data to `all_chunks`
+for chunk_file in chunk_files:
+    with open(chunk_file, 'rb') as file:
+        chunk_data = pickle.load(file)
+        all_chunks.extend(chunk_data)  # Extend by chunk data
+
+books = all_chunks
+
+
+#books = pickle.load(open('book.pkl', 'rb'))
 popular = pickle.load(open('popular1.pkl', 'rb'))
 similarity_scores = pickle.load(open('similarity_scores.pkl', 'rb'))
 pivot = pickle.load(open('pivot_table.pkl', 'rb'))
